@@ -1,0 +1,41 @@
+{
+    "bullets": [
+        {
+        "bulleId": 1,
+        "positionX": 315,
+        "positionY": 520,
+        "width1": 40,
+        "height1": 40,
+        "texture1": "bullet",
+        "width2": 83,
+        "height2": 48,
+        "texture2": "ammo_clip",
+        "levelId": 1
+        },
+        {
+        "bulleId": 2,
+        "positionX": 300,
+        "positionY": 520,
+        "width1": 40,
+        "height1": 40,
+        "texture1": "bullet",
+        "width2": 83,
+        "height2": 48,
+        "texture2": "ammo_clip",
+        "levelId": 2
+        },
+        {
+        "bulleId": 3,
+        "positionX": 500,
+        "positionY": 520,
+        "width1": 40,
+        "height1": 40,
+        "texture1": "bullet",
+        "width2": 83,
+        "height2": 48,
+        "texture2": "ammo_clip",
+        "levelId": 3
+        }
+  ]
+}
+  

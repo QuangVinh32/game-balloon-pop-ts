@@ -1,0 +1,65 @@
+{
+    "fishes": [
+      {
+        "fishId": 1,
+        "width1": 60,
+        "height1": 74,
+        "levelId": 1
+      },
+      {
+        "fishId": 2,
+        "width1": 60,
+        "height1": 74,
+        "levelId": 1
+      },
+      {
+        "fishId": 3,
+        "width1": 60,
+        "height1": 74,
+        "levelId": 1
+      },
+      {
+        "fishId": 4,
+        "width1": 60,
+        "height1": 74,
+        "levelId": 1
+      },
+      {
+        "fishId": 5,
+        "width1": 60,
+        "height1": 74,
+        "levelId": 1
+      },
+      {
+        "fishId": 6,
+        "width1": 60,
+        "height1": 74,
+        "levelId": 1
+      },
+      {
+        "fishId": 7,
+        "width1": 60,
+        "height1": 74,
+        "levelId": 1
+      },
+      {
+        "fishId": 8,
+        "width1": 60,
+        "height1": 74,
+        "levelId": 1
+      },
+      {
+        "fishId": 9,
+        "width1": 60,
+        "height1": 74,
+        "levelId": 1
+      },
+      {
+        "fishId": 10,
+        "width1": 60,
+        "height1": 74,
+        "levelId": 1
+      }
+    ]
+  }
+  

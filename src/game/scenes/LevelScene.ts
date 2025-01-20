@@ -135,7 +135,7 @@ export default class LevelScene extends Phaser.Scene {
                 console.error("FishView does not have a ball property:", fishView);
             }
             
-            fishView.setScale(0.8);
+            // fishView.setScale(0.8);
             const randomDuration = Phaser.Math.Between(2000, 7000);
             const randomDelay = Phaser.Math.Between(0, 15000);
             this.tweens.add({
@@ -161,7 +161,7 @@ export default class LevelScene extends Phaser.Scene {
   
     update() {
         if (this.bulletView && this.bulletView.bullet) {    
-            if (this.bulletView.bullet.y >= 120) {
+            if (this.bulletView.bullet.y >= 100) {
                 this.splashSound.play();
                 this.bulletView.container1.rotation = 0;
                 this.bulletView.container2.rotation = 0

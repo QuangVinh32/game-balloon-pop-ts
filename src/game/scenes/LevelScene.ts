@@ -157,7 +157,18 @@ export default class LevelScene extends Phaser.Scene {
             
         });
 
-
+        this.scene.events.on('update', () => {
+            if (this.bullet.y >= 500) {
+                console.log('Bullet reached the ground');
+        
+                this.bullet.setVelocity(0, 0);
+                this.bullet.setPosition(startX, startY + 15);
+        
+                if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
+                    this.bullet.body.setGravityY(0);
+                }
+            }
+        });
 
     }
     update() {
@@ -165,9 +176,11 @@ export default class LevelScene extends Phaser.Scene {
             if (this.bulletView.bullet.y >= 120) {
                 this.splashSound.play();
                 this.bulletView.container1.rotation = 0;
+                this.bulletView.bullet.body.rotation = 20
                 this.bulletView.bullet.body.setVelocity(0, 0);
                 this.bulletView.bullet.body.setGravityY(0);
                 this.bulletView.bullet.setPosition(0, 15);
+                console.log("Vị trí container1 ",this.bulletView.container1.x, this.bulletView.container1.y)
                 console.log('Bullet đã quay về vị trí ban đầu.');
             }
         } else {

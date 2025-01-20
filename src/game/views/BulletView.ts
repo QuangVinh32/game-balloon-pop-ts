@@ -112,8 +112,10 @@ export default class BulletView extends BaseView {
         const centerX = this.bulletData.positionX;
         const centerY = this.bulletData.positionY + 20;
         let startAngle = 0;
-        let startX = 0;
-        let startY = 0;
+        let startX = this.container1.x; 
+        let startY = this.container1.y;
+
+    
         let isDragAllowed = true;
         console.log("Tâm", centerX, centerY);
     
@@ -217,6 +219,7 @@ export default class BulletView extends BaseView {
                 }
     
                 this.container1.setPosition(startX, startY);
+                this.bullet.setPosition(0, 15);
                 this.container1.rotation = 0;
     
                 this.line.setTo(
@@ -239,7 +242,8 @@ export default class BulletView extends BaseView {
                 console.log('Bullet reached the ground');
         
                 this.bullet.setVelocity(0, 0);
-                this.bullet.setPosition(startX,startY);
+                this.container1.setPosition(startX, startY);
+                this.bullet.setPosition(0, 15);
                 console.log("vij tris x va y", startX,startY)
         
                 if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {

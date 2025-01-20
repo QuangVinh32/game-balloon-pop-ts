@@ -7,7 +7,7 @@ export class ResultScene extends Phaser.Scene {
     public successSound: Phaser.Sound.NoAudioSound | Phaser.Sound.HTML5AudioSound | Phaser.Sound.WebAudioSound; 
     public failureSound: Phaser.Sound.NoAudioSound | Phaser.Sound.HTML5AudioSound | Phaser.Sound.WebAudioSound; 
     private fishService: FishService;
-    private columnXPositions: number[]; // Mảng lưu trữ các vị trí X của các cột đỏ
+    private columnXPositions: number[];
 
 
     constructor() {
@@ -60,7 +60,7 @@ export class ResultScene extends Phaser.Scene {
 
             // Vẽ dấu X bằng text
             this.add.text(x, yPosition - 30, 'X', {
-                fontSize: '30px Arial',
+                fontSize: '25px Arial',
                 color: 'black',
                 fontStyle: 'bold',
             }).setOrigin(0.5).setResolution(2);
@@ -68,8 +68,6 @@ export class ResultScene extends Phaser.Scene {
             drawnPositions.set(x, (drawnPositions.get(x) || 0) + 1);
         });
 
-
-        // In ra console để kiểm tra các vị trí X
         console.log('Final Column X Positions with Y-offset:', drawnPositions);
 
         const columnWidth = 50;
@@ -90,7 +88,7 @@ export class ResultScene extends Phaser.Scene {
         square.setInteractive({ draggable: true });
 
         const squareText = this.add.text(square.x, square.y, 'X', {
-            fontSize: '30px Arial',
+            fontSize: '25px Arial',
             color: 'black',
             fontStyle: 'bold'
         }).setOrigin(0.5).setResolution(2);
@@ -124,21 +122,34 @@ export class ResultScene extends Phaser.Scene {
 
                 square.setVisible(false);
                 squareText.setVisible(false);
-
          
                 const drawnPositions = new Map<number, number>(); 
                 this.columnXPositions.forEach((x) => {
                     const yOffset = drawnPositions.get(x) || 0; 
                     const yPosition = startY - 35 * yOffset;
 
-                    // Vẽ dấu X bằng text
                     this.add.text(x, yPosition - 30, 'X', {
-                        fontSize: '30px Arial',
+                        fontSize: '25px Arial',
                         color: 'black',
                         fontStyle: 'bold',
                     }).setOrigin(0.5).setResolution(2);
 
                     drawnPositions.set(x, (drawnPositions.get(x) || 0) + 1);
+                });
+
+                // Kiểm tra và xử lý nếu có 3 dấu "X" cùng vị trí
+                drawnPositions.forEach((count, x) => {
+                    if (count >= 8) {
+                        // Xóa vị trí khỏi columnXPositions
+                        // this.columnXPositions = this.columnXPositions.filter(pos => pos !== x);
+
+                        // Xóa tất cả trong mảng
+                        this.columnXPositions.length = 0;
+
+                        this.totalScore = 0;
+
+                        console.log(`Removed all X from position ${x}. Total score reset.`);
+                    }
                 });
 
                 console.log('Correct!');

@@ -221,7 +221,7 @@ export default class BulletView extends BaseView {
                 this.container1.setPosition(startX, startY);
 
 
-                this.ammoClip.setPosition(0, 30);  // Cập nhật lại vị trí ammo
+                this.ammoClip.setPosition(0, 30); 
                 this.line.setTo(
                     this.originalLine1.x1, this.originalLine1.y1,
                     this.originalLine1.x2, this.originalLine1.y2
@@ -234,18 +234,18 @@ export default class BulletView extends BaseView {
                 this.line2.setLineWidth(15);
 
                 
-                this.scene.events.on('update', () => {
-                if (this.bullet.y >= 120) {
-                    console.log('Bullet reached the ground');
+            //     this.scene.events.on('update', () => {
+            //     if (this.bullet.y >= 120) {
+            //         console.log('Bullet reached the ground');
             
-                    this.bullet.setVelocity(0, 0);
-                    this.bullet.setPosition(startX, startY + 15);
+            //         this.bullet.setVelocity(0, 0);
+            //         this.bullet.setPosition(startX, startY + 15);
             
-                    if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
-                        this.bullet.body.setGravityY(0);
-                    }
-                }
-            });
+            //         if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
+            //             this.bullet.body.setGravityY(0);
+            //         }
+            //     }
+            // });
             }
         });  
 

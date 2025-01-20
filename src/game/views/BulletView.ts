@@ -183,12 +183,10 @@ export default class BulletView extends BaseView {
                 );
             }
         });
-    
         this.scene.input.on('dragend', (pointer: Phaser.Input.Pointer, gameObject: Phaser.GameObjects.Container) => {
             if (!isDragAllowed) {
                 return;
             }
-    
             if (gameObject === this.container1) {
                 console.log('Drag ended');
     
@@ -219,7 +217,8 @@ export default class BulletView extends BaseView {
                 }
     
                 this.container1.setPosition(startX, startY);
-                this.bullet.setPosition(0, 15);
+                // this.bullet.setPosition(0, 15);
+
                 this.container1.rotation = 0;
                 this.line.setTo(
                     this.originalLine1.x1, this.originalLine1.y1,
@@ -238,15 +237,16 @@ export default class BulletView extends BaseView {
         // this.scene.events.on('update', () => {
         //     if (this.bullet.y >= 120) {
         //         console.log('Bullet reached the ground');
+        //         if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
+        //             this.bullet.body.setGravityY(0);
+        //         }
         
         //         this.bullet.setVelocity(0, 0);
         //         this.container1.setPosition(startX, startY);
         //         this.bullet.setPosition(0, 15);
         //         console.log("vij tris x va y", startX,startY)
         
-        //         if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
-        //             this.bullet.body.setGravityY(0);
-        //         }
+               
         //     }
         // });
     

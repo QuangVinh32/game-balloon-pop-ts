@@ -30,7 +30,7 @@ export default class BulletView extends BaseView {
         this.createLine2();
         this.createContainers();
         this.setViewPosition(bulletData.positionX, bulletData.positionY);
-        this.updateContainerSize(200,200)
+        this.updateContainerSize(100,100)
     }
 
     private createBullet(): void {
@@ -94,7 +94,6 @@ export default class BulletView extends BaseView {
         this.container1.setSize(bounds.width, bounds.height);
         this.container1.setInteractive({
             hitArea: new Phaser.Geom.Rectangle(0, 18, bounds.width , bounds.height + 7),
-            
             hitAreaCallback: Phaser.Geom.Rectangle.Contains,
             draggable: true,
         });
@@ -131,7 +130,7 @@ export default class BulletView extends BaseView {
     
             isDragAllowed = true;
             startX = this.container1.x;
-            startY = this.container1.y;
+            startY = this.container1.y;            
             startAngle = Phaser.Math.Angle.Between(centerX, centerY, pointer.x, pointer.y + 200);
         });
     
@@ -149,6 +148,7 @@ export default class BulletView extends BaseView {
                 const rotationDelta = currentAngle - startAngle;
                 this.container1.rotation += rotationDelta;
                 startAngle = currentAngle;
+                
     
                 const dragDistance = Phaser.Math.Distance.Between(startX, startY, dragX, dragY);
     
@@ -221,36 +221,34 @@ export default class BulletView extends BaseView {
                 this.container1.setPosition(startX, startY);
                 this.bullet.setPosition(0, 15);
                 this.container1.rotation = 0;
-    
                 this.line.setTo(
                     this.originalLine1.x1, this.originalLine1.y1,
                     this.originalLine1.x2, this.originalLine1.y2
                 );
-    
                 this.line2.setTo(
                     this.originalLine2.x1, this.originalLine2.y1,
                     this.originalLine2.x2, this.originalLine2.y2
                 );
-    
                 this.line.setLineWidth(15);
                 this.line2.setLineWidth(15);
+                
             }
         });
 
-        this.scene.events.on('update', () => {
-            if (this.bullet.y >= 120) {
-                console.log('Bullet reached the ground');
+        // this.scene.events.on('update', () => {
+        //     if (this.bullet.y >= 120) {
+        //         console.log('Bullet reached the ground');
         
-                this.bullet.setVelocity(0, 0);
-                this.container1.setPosition(startX, startY);
-                this.bullet.setPosition(0, 15);
-                console.log("vij tris x va y", startX,startY)
+        //         this.bullet.setVelocity(0, 0);
+        //         this.container1.setPosition(startX, startY);
+        //         this.bullet.setPosition(0, 15);
+        //         console.log("vij tris x va y", startX,startY)
         
-                if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
-                    this.bullet.body.setGravityY(0);
-                }
-            }
-        });
+        //         if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
+        //             this.bullet.body.setGravityY(0);
+        //         }
+        //     }
+        // });
     
 
     }

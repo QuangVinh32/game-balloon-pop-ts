@@ -138,17 +138,18 @@ export default class LevelScene extends Phaser.Scene {
 
     }
     update() {
-        // if (this.bulletView && this.bulletView.bullet) {    
-        //     if (this.bulletView.bullet.y >= 120) {
-        //         this.splashSound.play();
-        //         this.bulletView.bullet.setPosition(this.bulletView.container1.x, this.bulletView.container1.y + 15);
-        //         this.bulletView.bullet.setVelocity(0, 0);
-        //         this.bulletView.bullet.body.setGravityY(0);
-        //         console.log('Bullet đã quay về vị trí ban đầu.');
-        //     }
-        // } else {
-        //     console.warn("BulletView hoặc Bullet không tồn tại.");
-        // }
+        if (this.bulletView && this.bulletView.bullet) {    
+            if (this.bulletView.bullet.y >= 120) {
+                this.splashSound.play();
+                this.bulletView.container1.rotation = 0;
+                this.bulletView.bullet.setVelocity(0, 0);
+                this.bulletView.bullet.body.setGravityY(0);
+                this.bulletView.bullet.setPosition(this.bulletView.container1.x, this.bulletView.container1.y + 15);
+                console.log('Bullet đã quay về vị trí ban đầu.');
+            }
+        } else {
+            console.warn("BulletView hoặc Bullet không tồn tại.");
+        }
     }
     
 }

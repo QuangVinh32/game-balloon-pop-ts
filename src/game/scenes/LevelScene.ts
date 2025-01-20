@@ -29,6 +29,7 @@ export default class LevelScene extends Phaser.Scene {
         this.load.image('bullet', 'assets/images/bullet.png');
         this.load.image('gun_body', 'assets/images/gun_body.png');
         this.load.image('ammo_clip','assets/images/ammo_clip.png')
+        this.load.image('sea','assets/images/sea.png')
 
         // ball
         this.load.image('ball_blue', 'assets/images/ball_blue.png'); 
@@ -57,6 +58,28 @@ export default class LevelScene extends Phaser.Scene {
         this.splashSound = this.sound.add('sound_splash', { volume: 1 });
 
         this.add.image(0, 0, 'background').setOrigin(0, 0).setDisplaySize(this.scale.width, this.scale.height);
+
+        const seaImage1 = this.add.image(0, 530, 'sea').setOrigin(0, 0).setDisplaySize(920, 190);
+        const seaImage2 = this.add.image(920, 530, 'sea').setOrigin(0, 0).setDisplaySize(920, 190);
+        
+        this.time.addEvent({
+            delay: 16,  // Thời gian giữa mỗi lần cập nhật
+            callback: () => {
+                // Di chuyển các hình ảnh từ trái sang phải
+                seaImage1.x += 2;
+                seaImage2.x += 2;
+        
+                // Kiểm tra nếu một hình ảnh di chuyển ra ngoài bên phải màn hình
+                if (seaImage1.x >= this.scale.width) {
+                    seaImage1.x = seaImage2.x - seaImage2.displayWidth -5;  // Đặt seaImage1 lại phía sau seaImage2
+                }
+                if (seaImage2.x >= this.scale.width) {
+                    seaImage2.x = seaImage1.x - seaImage1.displayWidth - 5;  // Đặt seaImage2 lại phía sau seaImage1
+                }
+            },
+            loop: true,  // Lặp lại liên tục
+        });
+        
 
         this.physics.world.setBounds(0,0,this.scale.width, this.scale.height);
 
@@ -136,13 +159,15 @@ export default class LevelScene extends Phaser.Scene {
             
         });
 
+
+
     }
     update() {
         if (this.bulletView && this.bulletView.bullet) {    
             if (this.bulletView.bullet.y >= 120) {
                 this.splashSound.play();
                 this.bulletView.container1.rotation = 0;
-                this.bulletView.bullet.setVelocity(0, 0);
+                this.bulletView.bullet.body.setVelocity(0, 0);
                 this.bulletView.bullet.body.setGravityY(0);
                 this.bulletView.bullet.setPosition(0, 15);
                 console.log('Bullet đã quay về vị trí ban đầu.');

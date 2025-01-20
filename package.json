@@ -22,9 +22,9 @@
         "typescript"
     ],
     "scripts": {
-        "dev": "node log.js dev & next dev -p 3000",
+        "dev": "node log.js dev & next dev -p 3001",
         "build": "node log.js build & next build",
-        "dev-nolog": "next dev -p 3000",
+        "dev-nolog": "next dev -p 3001",
         "build-nolog": "next build"
     },
     "dependencies": {

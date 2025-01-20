@@ -157,20 +157,8 @@ export default class LevelScene extends Phaser.Scene {
             
         });
 
-        this.scene.events.on('update', () => {
-            if (this.bullet.y >= 500) {
-                console.log('Bullet reached the ground');
-        
-                this.bullet.setVelocity(0, 0);
-                this.bullet.setPosition(startX, startY + 15);
-        
-                if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
-                    this.bullet.body.setGravityY(0);
-                }
-            }
-        });
-
     }
+  
     update() {
         if (this.bulletView && this.bulletView.bullet) {    
             if (this.bulletView.bullet.y >= 120) {

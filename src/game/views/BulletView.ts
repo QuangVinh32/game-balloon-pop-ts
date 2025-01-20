@@ -213,7 +213,7 @@ export default class BulletView extends BaseView {
                     this.bullet.body.enable = true;
 
                 } else {
-                    console.error('Bullet does not have a valid dynamic physics body');
+                    console.error('Bullet doe not have a valid dynamic physics body');
                 }
     
                 this.container1.setPosition(startX, startY);
@@ -239,7 +239,8 @@ export default class BulletView extends BaseView {
                 console.log('Bullet reached the ground');
         
                 this.bullet.setVelocity(0, 0);
-                this.bullet.setPosition(startX, startY + 15);
+                this.bullet.setPosition(startX,startY);
+                console.log("vij tris x va y", startX,startY)
         
                 if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
                     this.bullet.body.setGravityY(0);

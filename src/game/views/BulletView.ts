@@ -235,7 +235,7 @@ export default class BulletView extends BaseView {
         });
 
         this.scene.events.on('update', () => {
-            if (this.bullet.y >= 500) {
+            if (this.bullet.y >= 120) {
                 console.log('Bullet reached the ground');
         
                 this.bullet.setVelocity(0, 0);

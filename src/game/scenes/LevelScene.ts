@@ -88,7 +88,7 @@ export default class LevelScene extends Phaser.Scene {
         if (bulletDTO) {
             this.bulletView = this.bulletService.getBulletViewBylevelId(this.levelId);
             if (this.bulletView) {
-                this.bulletView.setScale(0.9);
+                // this.bulletView.setScale(0.9);
             } else {
                 console.error("BulletView not found for levelId:", this.levelId);
             }
@@ -164,10 +164,10 @@ export default class LevelScene extends Phaser.Scene {
             if (this.bulletView.bullet.y >= 120) {
                 this.splashSound.play();
                 this.bulletView.container1.rotation = 0;
-                this.bulletView.bullet.body.rotation = 20
+                this.bulletView.container2.rotation = 0
                 this.bulletView.bullet.body.setVelocity(0, 0);
                 this.bulletView.bullet.body.setGravityY(0);
-                this.bulletView.bullet.setPosition(0, 15);
+                this.bulletView.bullet.setPosition(this.bulletView.container1.x, this.bulletView.container1.y);
                 console.log("Vị trí container1 ",this.bulletView.container1.x, this.bulletView.container1.y)
                 console.log('Bullet đã quay về vị trí ban đầu.');
             }

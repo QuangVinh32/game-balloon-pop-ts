@@ -35,16 +35,7 @@ export default class LoadingScene extends Phaser.Scene {
         loading.play('falling');
 
         this.cameras.main.once('camerafadeoutcomplete', () => {
-            // this.scene.launch('UIScene');
-            // this.scene.launch('GamePlayScene');
             this.scene.start('LevelScene')
-            // this.scene.start('ResultScene')
-            // this.scene.launch('QuestionScene')
-            // this.scene.launch('ContinueScene')
-
-
-            
-
         });
 
         this.cameras.main.fadeOut(1000); 

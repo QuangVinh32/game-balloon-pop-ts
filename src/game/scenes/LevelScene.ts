@@ -137,11 +137,6 @@ export default class LevelScene extends Phaser.Scene {
             
         });
 
-        // Thực hiện va chạm giữa bullet trong BulletView với ball trong fishView => mỗi lần va chạm sẽ + 1 điểm , bỏ qua phản lực khi va chạm
-        // Nếu va chạm thì ẩn đi ball và line trong fishView và fish thì xoay 1 góc 90 độ và rơi xuống
-        // Nêu fish di chuyển hết đến đích thì chuyển sang scene Result 
-        // và tạo 1 mảng có kích thước fishView.lenght mỗi lần fishView hoàn thành x: this.scale.width + 100 sẽ - đi một phần tử 
-        // nếu va chạm giữa fish và bullet cuối cùng thì start ResultScene
     }
     update() {
         if (this.bulletView && this.bulletView.bullet) {    
@@ -150,7 +145,7 @@ export default class LevelScene extends Phaser.Scene {
                 this.bulletView.bullet.setPosition(this.bulletView.container1.x, this.bulletView.container1.y + 15);
                 this.bulletView.bullet.setVelocity(0, 0);
                 this.bulletView.bullet.body.setGravityY(0);
-        console.log('Bullet đã quay về vị trí ban đầu.');
+                console.log('Bullet đã quay về vị trí ban đầu.');
             }
         } else {
             console.warn("BulletView hoặc Bullet không tồn tại.");

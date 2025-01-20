@@ -144,7 +144,7 @@ export default class LevelScene extends Phaser.Scene {
                 this.bulletView.container1.rotation = 0;
                 this.bulletView.bullet.setVelocity(0, 0);
                 this.bulletView.bullet.body.setGravityY(0);
-                this.bulletView.bullet.setPosition(100, 100);
+                this.bulletView.bullet.setPosition(0, 15);
                 console.log('Bullet đã quay về vị trí ban đầu.');
             }
         } else {

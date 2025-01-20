@@ -24,7 +24,7 @@ export class QuestionScene extends Phaser.Scene {
 
     create() {
 
-        this.add.text(this.scale.width / 2, 470, `Your score is ${this.totalScore}. Drag the X to the red column.`, {
+        this.add.text(this.scale.width / 2, 470, `Your score is ${this.score}. Drag the X to the red column.`, {
             fontSize: '20px Arial',
             color: 'black',
             fontStyle:"bold"

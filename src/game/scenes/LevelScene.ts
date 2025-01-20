@@ -63,21 +63,19 @@ export default class LevelScene extends Phaser.Scene {
         const seaImage2 = this.add.image(920, 530, 'sea').setOrigin(0, 0).setDisplaySize(920, 190);
         
         this.time.addEvent({
-            delay: 16,  // Thời gian giữa mỗi lần cập nhật
+            delay: 16,
             callback: () => {
-                // Di chuyển các hình ảnh từ trái sang phải
                 seaImage1.x += 2;
                 seaImage2.x += 2;
         
-                // Kiểm tra nếu một hình ảnh di chuyển ra ngoài bên phải màn hình
                 if (seaImage1.x >= this.scale.width) {
-                    seaImage1.x = seaImage2.x - seaImage2.displayWidth -5;  // Đặt seaImage1 lại phía sau seaImage2
+                    seaImage1.x = seaImage2.x - seaImage2.displayWidth -10;  
                 }
                 if (seaImage2.x >= this.scale.width) {
-                    seaImage2.x = seaImage1.x - seaImage1.displayWidth - 5;  // Đặt seaImage2 lại phía sau seaImage1
+                    seaImage2.x = seaImage1.x - seaImage1.displayWidth -10;  
                 }
             },
-            loop: true,  // Lặp lại liên tục
+            loop: true,
         });
         
 

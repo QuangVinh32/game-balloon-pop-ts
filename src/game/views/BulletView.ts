@@ -191,31 +191,31 @@ export default class BulletView extends BaseView {
             if (gameObject === this.container1) {
                 console.log('Drag ended');
     
-                // const angle = Phaser.Math.Angle.Between(centerX, centerY, pointer.x, pointer.y);
-                // const oppositeAngle = angle + Math.PI;
+                const angle = Phaser.Math.Angle.Between(centerX, centerY, pointer.x, pointer.y);
+                const oppositeAngle = angle + Math.PI;
     
-                // const dragDistance = Phaser.Math.Distance.Between(centerX, centerY, pointer.x, pointer.y);
+                const dragDistance = Phaser.Math.Distance.Between(centerX, centerY, pointer.x, pointer.y);
 
-                // const baseSpeed = 800;   
-                // const maxSpeed = 2500; 
-                // const speed = Phaser.Math.Clamp(dragDistance * 20, baseSpeed, maxSpeed);
+                const baseSpeed = 800;   
+                const maxSpeed = 2500; 
+                const speed = Phaser.Math.Clamp(dragDistance * 20, baseSpeed, maxSpeed);
 
-                // console.log(`Drag Distance: ${dragDistance}, Speed: ${speed}`);
+                console.log(`Drag Distance: ${dragDistance}, Speed: ${speed}`);
 
     
-                // const velocityX = Math.cos(oppositeAngle) * speed;
-                // const velocityY = Math.sin(oppositeAngle) * speed;
+                const velocityX = Math.cos(oppositeAngle) * speed;
+                const velocityY = Math.sin(oppositeAngle) * speed;
     
-                // if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
-                //     this.bullet.setVelocity(velocityX, velocityY);
-                //     this.bullet.body.setGravityY(1000);
-                //     this.bullet.body.setBounce(0.4);
-                //     this.bullet.body.setCollideWorldBounds(true);
-                //     this.bullet.body.enable = true;
+                if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
+                    this.bullet.setVelocity(velocityX, velocityY);
+                    this.bullet.body.setGravityY(1000);
+                    this.bullet.body.setBounce(0.4);
+                    this.bullet.body.setCollideWorldBounds(true);
+                    this.bullet.body.enable = true;
 
-                // } else {
-                //     console.error('Bullet doe not have a valid dynamic physics body');
-                // }
+                } else {
+                    console.error('Bullet doe not have a valid dynamic physics body');
+                }
                 
                 this.container1.rotation = 0;
                 this.container1.setPosition(startX, startY);

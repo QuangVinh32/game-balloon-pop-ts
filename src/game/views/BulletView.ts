@@ -109,7 +109,7 @@ export default class BulletView extends BaseView {
 
     private setupDragEvents(): void {
         const centerX = this.bulletData.positionX;
-        const centerY = this.bulletData.positionY + 20;
+        const centerY = this.bulletData.positionY;
         let startAngle = 0;
         let startX = this.container1.x; 
         let startY = this.container1.y;
@@ -131,7 +131,7 @@ export default class BulletView extends BaseView {
             isDragAllowed = true;
             startX = this.container1.x;
             startY = this.container1.y;            
-            startAngle = Phaser.Math.Angle.Between(centerX, centerY, pointer.x, pointer.y + 200);
+            startAngle = Phaser.Math.Angle.Between(centerX, centerY, pointer.x, pointer.y);
         });
     
         

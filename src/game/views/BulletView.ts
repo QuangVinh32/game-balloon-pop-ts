@@ -109,7 +109,7 @@ export default class BulletView extends BaseView {
 
     private setupDragEvents(): void {
         const centerX = this.bulletData.positionX;
-        const centerY = this.bulletData.positionY;
+        const centerY = this.bulletData.positionY + 20;
         let startAngle = 0;
         let startX = this.container1.x; 
         let startY = this.container1.y;
@@ -131,7 +131,7 @@ export default class BulletView extends BaseView {
             isDragAllowed = true;
             startX = this.container1.x;
             startY = this.container1.y;            
-            startAngle = Phaser.Math.Angle.Between(centerX, centerY, pointer.x, pointer.y);
+            startAngle = Phaser.Math.Angle.Between(centerX, centerY, pointer.x, pointer.y + 200);
         });
     
         
@@ -234,18 +234,35 @@ export default class BulletView extends BaseView {
                 this.line2.setLineWidth(15);
 
                 
-            //     this.scene.events.on('update', () => {
-            //     if (this.bullet.y >= 120) {
-            //         console.log('Bullet reached the ground');
+                this.scene.events.on('update', () => {
+                if (this.bullet.y >= 100) {
+                    console.log('Bullet reached the ground');
             
-            //         this.bullet.setVelocity(0, 0);
-            //         this.bullet.setPosition(startX, startY + 15);
-            
-            //         if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
-            //             this.bullet.body.setGravityY(0);
-            //         }
+                    this.bullet.setVelocity(0, 0); // Đặt lại vận tốc
+                    this.bullet.setPosition(startX, startY + 15); // Đặt lại vị trí ban đầu
+                    this.bullet.setRotation(Phaser.Math.DegToRad(0)); // Reset góc quay
+                    this.bullet.setDrag(0); // Xóa lực kéo
+                    this.bullet.setGravity(0, 0); // Xóa trọng lực (nếu có)
+                    if (this.bullet.body && this.bullet.body instanceof Phaser.Physics.Arcade.Body) {
+                        this.bullet.body.setGravityY(0);
+                        this.bullet.setRotation(Phaser.Math.DegToRad(0)); // Đặt lại góc về 0 độ
+                    }
+                }
+            });
+
+            // if (this.bulletView && this.bulletView.bullet) {    
+            //     if (this.bulletView.bullet.y >= 100) {
+            //         this.splashSound.play();
+            //         this.bulletView.container1.rotation = 0;
+            //         this.bulletView.container2.rotation = 0
+            //         this.bulletView.bullet.body.setVelocity(0, 0);
+            //         this.bulletView.bullet.body.setGravityY(0);
+            //         this.bulletView.bullet.setRotation(Phaser.Math.DegToRad(0)); 
+            //         this.bulletView.bullet.setPosition(this.bulletView.container1.x, this.bulletView.container1.y + 15);
+            //         console.log("Vị trí container1 ",this.bulletView.container1.x, this.bulletView.container1.y)
+            //         console.log('Bullet đã quay về vị trí ban đầu.');
             //     }
-            // });
+            // }
             }
         });  
 

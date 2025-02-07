@@ -26,7 +26,7 @@ const config: Phaser.Types.Core.GameConfig = {
             height: 650, 
         },
         min: {
-            width: 240, 
+            width: 230, 
             height: 240,
         }
     },

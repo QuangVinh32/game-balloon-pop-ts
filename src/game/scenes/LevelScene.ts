@@ -20,7 +20,7 @@ export default class LevelScene extends Phaser.Scene {
 
     init(data?: any) {
         this.score = 0;
-        console.log("LevelScene initialized with score:", this.score);
+        // console.log("LevelScene initialized with score:", this.score);
     }
 
     preload() {
@@ -146,7 +146,7 @@ export default class LevelScene extends Phaser.Scene {
                 ease: 'Linear',
                 onComplete: () => {
                     remainingFishViews--;
-                    console.log(`Remaining fishViews: ${remainingFishViews}`);
+                    // console.log(`Remaining fishViews: ${remainingFishViews}`);
                     if (remainingFishViews === 0) {
                         console.log('Hoàn thành');
                         this.scene.launch('QuestionScene', { score: this.score });
@@ -158,24 +158,25 @@ export default class LevelScene extends Phaser.Scene {
         });
 
     }
+    // hello
   
     update() {
-        // if (this.bulletView && this.bulletView.bullet) {    
-        //     if (this.bulletView.bullet.y >= 100) {
-        //         this.splashSound.play();
-        //         this.bulletView.container1.rotation = 0;
-        //         this.bulletView.container2.rotation = 0
-        //         this.bulletView.bullet.body.setVelocity(0, 0);
-        //         this.bulletView.bullet.body.setGravityY(0);
-        //         this.bulletView.bullet.setRotation(Phaser.Math.DegToRad(0)); 
+        if (this.bulletView && this.bulletView.bullet) {    
+            if (this.bulletView.bullet.y >= 100) {
+                this.splashSound.play();
+                this.bulletView.container1.rotation = 0;
+                this.bulletView.container2.rotation = 0
+                this.bulletView.bullet.body.setVelocity(0, 0);
+                this.bulletView.bullet.body.setGravityY(0);
+                this.bulletView.bullet.setRotation(Phaser.Math.DegToRad(0)); 
 
-        //         this.bulletView.bullet.setPosition(this.bulletView.container1.x, this.bulletView.container1.y + 15);
-        //         console.log("Vị trí container1 ",this.bulletView.container1.x, this.bulletView.container1.y)
-        //         console.log('Bullet đã quay về vị trí ban đầu.');
-        //     }
-        // } else {
-        //     console.warn("BulletView hoặc Bullet không tồn tại.");
-        // }
+                this.bulletView.bullet.setPosition(this.bulletView.container1.x, this.bulletView.container1.y + 15);
+                console.log("Vị trí container1 ",this.bulletView.container1.x, this.bulletView.container1.y)
+                // console.log('Bullet đã quay về vị trí ban đầu.');
+            }
+        } else {
+            // console.warn("BulletView hoặc Bullet không tồn tại.");
+        }
     }
     
 }
